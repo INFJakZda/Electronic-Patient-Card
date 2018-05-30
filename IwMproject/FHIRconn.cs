@@ -23,7 +23,15 @@ namespace IwMproject
 
         public Patient GetPatientByID(string id)
         {
-            Patient patient = client.Read<Patient>("Patient/" + id);
+            Patient patient;
+            try
+            {
+                patient = client.Read<Patient>("Patient/" + id);
+            }
+            catch
+            {
+                return new Patient();
+            }
             return patient;
         }
 
@@ -31,21 +39,33 @@ namespace IwMproject
         {
             Patient patient;
             List<Patient> patients = new List<Patient>();
-            var b = client.Search<Hl7.Fhir.Model.Patient>(new string[] { "name=" + patientName });
-
-            foreach (var Entry in b.Entry)
+            try
             {
-                var x = Entry.Resource;
-                patient = (Patient)x;
-                patients.Add(patient);
+                var b = client.Search<Hl7.Fhir.Model.Patient>(new string[] { "name=" + patientName });
+
+                foreach (var Entry in b.Entry)
+                {
+                    var x = Entry.Resource;
+                    patient = (Patient)x;
+                    patients.Add(patient);
+                }
+                return patients;
             }
-            return patients;
+            catch
+            {
+                Console.WriteLine(DateTime.Now + " : Server timeout!!!");
+                return patients;
+            }
         }
 
         public List<Patient> GetListOfAllPatients()
         {
             List<Patient> patients = new List<Patient>();
             for (char letter = 'A'; letter <= 'Z'; letter++)
+            {
+                patients.AddRange(GetListOfPatients(letter.ToString()));
+            }
+            for (char letter = '0'; letter <= '9'; letter++)
             {
                 patients.AddRange(GetListOfPatients(letter.ToString()));
             }

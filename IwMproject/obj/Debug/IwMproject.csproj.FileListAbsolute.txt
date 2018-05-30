@@ -18,3 +18,4 @@ C:\Users\Raw\source\repos\IwMproject\IwMproject\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Raw\source\repos\IwMproject\IwMproject\obj\Debug\IwMproject.csproj.CopyComplete
 C:\Users\Raw\source\repos\IwMproject\IwMproject\bin\Debug\Hl7.Fhir.STU3.Core.dll
 C:\Users\Raw\source\repos\IwMproject\IwMproject\bin\Debug\Hl7.Fhir.STU3.Core.xml
+C:\Users\Raw\source\repos\IwMproject\IwMproject\obj\Debug\IwMproject.Form2.resources

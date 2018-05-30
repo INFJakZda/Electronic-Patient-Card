@@ -46,7 +46,7 @@ namespace IwMproject
 
                     if (!String.IsNullOrEmpty(name))
                     {
-                        string outS = l.Id + " \t " + l.Name[0].GivenElement[0] + " \t " + l.Name[0].Family;
+                        string outS = l.Id + "---" + l.Name[0].GivenElement[0] + "---" + l.Name[0].Family;
                         listBox1.Items.Add(outS);
                     }
                 }
@@ -71,7 +71,7 @@ namespace IwMproject
 
                         if (!String.IsNullOrEmpty(name))
                         {
-                            string outS = l.Id + " \t " + l.Name[0].GivenElement[0] + " \t " + l.Name[0].Family;
+                            string outS = l.Id + "---" + l.Name[0].GivenElement[0] + "---" + l.Name[0].Family;
                             listBox1.Items.Add(outS);
                         }
                     }
@@ -102,7 +102,10 @@ namespace IwMproject
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            string arg = textBox1.Text;
+            textBox1.Clear();
+            Form2 detailsWindows = new Form2(arg);
+            detailsWindows.Show();
         }
     }
 }
