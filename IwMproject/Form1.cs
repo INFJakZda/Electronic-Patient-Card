@@ -27,13 +27,13 @@ namespace IwMproject
 
         private void button1_Click(object sender, EventArgs e)
         {
-           if(String.IsNullOrEmpty(textBox1.Text))
+            listBox1.Items.Clear();
+            if (String.IsNullOrEmpty(textBox1.Text))
             {
                 List<Patient> patients = connDB.GetListOfAllPatients();
 
                 foreach (var l in patients)
                 {
-                    int numberPatient = 0;
                     string name;
                     try
                     {
@@ -46,12 +46,58 @@ namespace IwMproject
 
                     if (!String.IsNullOrEmpty(name))
                     {
-                        string outS = numberPatient + ". " + l.Id + " \t " + l.Name[0].GivenElement[0] + " \t " + l.Name[0].Family;
+                        string outS = l.Id + " \t " + l.Name[0].GivenElement[0] + " \t " + l.Name[0].Family;
                         listBox1.Items.Add(outS);
-                        numberPatient += 1;
                     }
                 }
             }
+           else
+            {
+                if(radioButton1.Checked)
+                {
+                    List<Patient> patients = connDB.GetListOfPatients(textBox1.Text);
+
+                    foreach (var l in patients)
+                    {
+                        string name;
+                        try
+                        {
+                            name = l.Name[0].GivenElement[0].ToString();
+                        }
+                        catch
+                        {
+                            name = null;
+                        }
+
+                        if (!String.IsNullOrEmpty(name))
+                        {
+                            string outS = l.Id + " \t " + l.Name[0].GivenElement[0] + " \t " + l.Name[0].Family;
+                            listBox1.Items.Add(outS);
+                        }
+                    }
+                }
+                else
+                {
+                    Patient l = connDB.GetPatientByID(textBox1.Text);
+
+                    string name;
+                    try
+                    {
+                        name = l.Name[0].GivenElement[0].ToString();
+                    }
+                    catch
+                    {
+                        name = null;
+                    }
+
+                    if (!String.IsNullOrEmpty(name))
+                    {
+                        string outS = l.Id + " \t " + l.Name[0].GivenElement[0] + " \t " + l.Name[0].Family;
+                        listBox1.Items.Add(outS);
+                    }
+                }
+            }
+            textBox1.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)

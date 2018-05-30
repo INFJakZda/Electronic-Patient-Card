@@ -21,6 +21,12 @@ namespace IwMproject
             client = new FhirClient(FhirClientEndPoint);
         }
 
+        public Patient GetPatientByID(string id)
+        {
+            Patient patient = client.Read<Patient>("Patient/" + id);
+            return patient;
+        }
+
         public List<Patient> GetListOfPatients(string patientName)
         {
             Patient patient;

@@ -66,6 +66,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(28, 18);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(53, 17);
@@ -81,7 +82,6 @@
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(36, 17);
             this.radioButton2.TabIndex = 4;
-            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "ID";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
@@ -102,7 +102,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(158, 50);
             this.button2.TabIndex = 6;
-            this.button2.Text = "Data";
+            this.button2.Text = "Patient details";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
